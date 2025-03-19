@@ -8,4 +8,9 @@ class PolygonsModel extends Model
 {
     protected $table = 'polygons';
     protected $guided = 'id';
+    protected $fillable = [
+        'geom',
+        'name',
+        'description',
+    ];
 }
