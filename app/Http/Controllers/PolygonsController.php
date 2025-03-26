@@ -46,7 +46,6 @@ class PolygonsController extends Controller
                 'description.required' => 'Description is required',
                 'geom_polygon.required' => 'Location is required',
             ]
-
         );
 
         // Get data from bootstrap form
