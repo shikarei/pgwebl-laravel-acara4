@@ -38,6 +38,7 @@ class PolygonsController extends Controller
                 'name' => 'required|unique:polygons,name',
                 'description' => 'required',
                 'geom_polygon' => 'required',
+                'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:5120',
             ],
             [
                 'name.required' => 'Name is required',
@@ -48,11 +49,26 @@ class PolygonsController extends Controller
             ]
         );
 
+        // Create image directory if not exists - PHP Create Directory
+        if (!is_dir('storage/images')) {
+            mkdir('./storage/images', 0777);
+        }
+
+        // Get image file - PHP Get Image file & Move
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name_image = time() . "_polygon." . strtolower($image->getClientOriginalExtension());
+            $image->move('storage/images', $name_image);
+        } else {
+            $name_image = null;
+        }
+
         // Get data from bootstrap form
         $data = [
             'geom' => $request->geom_polygon,
             'name' => $request->name,
             'description' => $request->description,
+            'image' => $name_image,
         ];
 
         //dd($data); //ini cuma ngecek dlm bentuk teks data geojson
