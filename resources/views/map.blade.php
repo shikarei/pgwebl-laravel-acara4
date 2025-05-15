@@ -235,11 +235,35 @@
         // GeoJSON Points -- PGWEBL ACARA 6
         var point = L.geoJson(null, {
             onEachFeature: function(feature, layer) {
-                var popupContent = "Nama: " + feature.properties.name + "<br>" +
+
+                var routedelete = "{{ route('points.destroy', ':id') }}";
+                routedelete = routedelete.replace(':id', feature.properties.id);
+
+                var routeedit = "{{ route('points.edit', ':id') }}";
+                routeedit = routeedit.replace(':id', feature.properties.id);
+
+                var popupContent =
+                    "Nama: " + feature.properties.name + "<br>" +
                     "Deskripsi: " + feature.properties.description + "<br>" +
                     "Dibuat: " + feature.properties.created_at + "<br>" +
                     "<img src='{{ asset('storage/images') }}/" + feature.properties.image +
-                    "' width='300px' alt=''>";
+                    "' width='300px' alt=''>" + "<br>" +
+
+                    "<div class='row mt-4'>" +
+
+                    "<div class='col-6'>" +
+                    "<a href='" + routeedit + "' class='btn btn-sm btn-warning'><i class='fa-solid fa-pen-to-square'></i></a>" +
+                    "</div>" +
+
+                    "<div class='col-6 text-end'>" +
+                    "<form method='POST' action='" + routedelete + "'>" +
+                    '@csrf' + '@method('DELETE')' +
+                    "<button type='submit' class='btn btn-sm btn-danger' onclick='return confirm(`Apa iyaaa mau dihapus?`)'><i class='fa-solid fa-trash'></i></button>" +
+                    "</form>" +
+                    "</div>" +
+
+                    "</div>";
+
                 layer.on({
                     click: function(e) {
                         point.bindPopup(popupContent);
@@ -258,12 +282,35 @@
         // GeoJSON Polylines -- PGWEBL ACARA 6
         var polyline = L.geoJson(null, {
             onEachFeature: function(feature, layer) {
+
+                var routedelete = "{{ route('polylines.destroy', ':id') }}";
+                routedelete = routedelete.replace(':id', feature.properties.id);
+
+                var routeedit = "{{ route('polylines.edit', ':id') }}";
+                routeedit = routeedit.replace(':id', feature.properties.id);
+
                 var popupContent = "Nama: " + feature.properties.name + "<br>" +
                     "Deskripsi: " + feature.properties.description + "<br>" +
                     "Panjang: " + feature.properties.length_km.toFixed(2) + "km" + "<br>" +
                     "Dibuat: " + feature.properties.created_at + "<br>" +
                     "<img src='{{ asset('storage/images') }}/" + feature.properties.image +
-                    "' width='300px' alt=''>";
+                    "' width='300px' alt=''>" + "<br>" +
+
+                    "<div class='row mt-4'>" +
+
+                    "<div class='col-6'>" +
+                    "<a href='" + routeedit + "' class='btn btn-sm btn-warning'><i class='fa-solid fa-pen-to-square'></i></a>" +
+                    "</div>" +
+
+                    "<div class='col-6 text-end'>" +
+                    "<form method='POST' action='" + routedelete + "'>" +
+                    '@csrf' + '@method('DELETE')' +
+                    "<button type='submit' class='btn btn-sm btn-danger' onclick='return confirm(`Apa iyaaa mau dihapus?`)'><i class='fa-solid fa-trash'></i></button>" +
+                    "</form>" +
+                    "</div>" +
+
+                    "</div>";
+                    
                 layer.on({
                     click: function(e) {
                         polyline.bindPopup(popupContent);
@@ -282,12 +329,35 @@
         // GeoJSON Polygons -- PGWEBL ACARA 6
         var polygon = L.geoJson(null, {
             onEachFeature: function(feature, layer) {
+
+                var routedelete = "{{ route('polygons.destroy', ':id') }}";
+                routedelete = routedelete.replace(':id', feature.properties.id);
+
+                var routeedit = "{{ route('polygons.edit', ':id') }}";
+                routeedit = routeedit.replace(':id', feature.properties.id);
+
                 var popupContent = "Nama: " + feature.properties.name + "<br>" +
                     "Deskripsi: " + feature.properties.description + "<br>" +
                     "Luas: " + feature.properties.area_hektar.toFixed(2) + "Ha" + "<br>" +
                     "Dibuat: " + feature.properties.created_at + "<br>" +
                     "<img src='{{ asset('storage/images') }}/" + feature.properties.image +
-                    "' width='300px' alt=''>";
+                    "' width='300px' alt=''>" + "<br>" +
+
+                    "<div class='row mt-4'>" +
+
+                    "<div class='col-6'>" +
+                    "<a href='" + routeedit + "' class='btn btn-sm btn-warning'><i class='fa-solid fa-pen-to-square'></i></a>" +
+                    "</div>" +
+
+                    "<div class='col-6 text-end'>" +
+                    "<form method='POST' action='" + routedelete + "'>" +
+                    '@csrf' + '@method('DELETE')' +
+                    "<button type='submit' class='btn btn-sm btn-danger' onclick='return confirm(`Apa iyaaa mau dihapus?`)'><i class='fa-solid fa-trash'></i></button>" +
+                    "</form>" +
+                    "</div>" +
+
+                    "</div>";
+
                 layer.on({
                     click: function(e) {
                         polygon.bindPopup(popupContent);

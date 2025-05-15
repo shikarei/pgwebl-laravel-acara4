@@ -16,3 +16,5 @@ Route::resource('points', PointsController::class);
 Route::resource('polylines', PolylinesController::class);
 
 Route::resource('polygons', PolygonsController::class);
+
+
