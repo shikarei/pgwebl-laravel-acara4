@@ -175,6 +175,8 @@
         }).addTo(map);
 
 
+
+
         /* Digitize Function ==== ACARA 4 PGWL*/
         var drawnItems = new L.FeatureGroup();
         map.addLayer(drawnItems);
@@ -252,7 +254,8 @@
                     "<div class='row mt-4'>" +
 
                     "<div class='col-6'>" +
-                    "<a href='" + routeedit + "' class='btn btn-sm btn-warning'><i class='fa-solid fa-pen-to-square'></i></a>" +
+                    "<a href='" + routeedit +
+                    "' class='btn btn-sm btn-warning'><i class='fa-solid fa-pen-to-square'></i></a>" +
                     "</div>" +
 
                     "<div class='col-6 text-end'>" +
@@ -261,8 +264,8 @@
                     "<button type='submit' class='btn btn-sm btn-danger' onclick='return confirm(`Apa iyaaa mau dihapus?`)'><i class='fa-solid fa-trash'></i></button>" +
                     "</form>" +
                     "</div>" +
-
-                    "</div>";
+                    "</div>" + "<br>" +
+                    "<p>Dibuat Oleh: " + feature.properties.user_created + "</p>";
 
                 layer.on({
                     click: function(e) {
@@ -299,7 +302,8 @@
                     "<div class='row mt-4'>" +
 
                     "<div class='col-6'>" +
-                    "<a href='" + routeedit + "' class='btn btn-sm btn-warning'><i class='fa-solid fa-pen-to-square'></i></a>" +
+                    "<a href='" + routeedit +
+                    "' class='btn btn-sm btn-warning'><i class='fa-solid fa-pen-to-square'></i></a>" +
                     "</div>" +
 
                     "<div class='col-6 text-end'>" +
@@ -308,9 +312,9 @@
                     "<button type='submit' class='btn btn-sm btn-danger' onclick='return confirm(`Apa iyaaa mau dihapus?`)'><i class='fa-solid fa-trash'></i></button>" +
                     "</form>" +
                     "</div>" +
+                    "</div>" + "<br>" +
+                    "<p>Dibuat Oleh: " + feature.properties.user_created + "</p>";
 
-                    "</div>";
-                    
                 layer.on({
                     click: function(e) {
                         polyline.bindPopup(popupContent);
@@ -346,7 +350,8 @@
                     "<div class='row mt-4'>" +
 
                     "<div class='col-6'>" +
-                    "<a href='" + routeedit + "' class='btn btn-sm btn-warning'><i class='fa-solid fa-pen-to-square'></i></a>" +
+                    "<a href='" + routeedit +
+                    "' class='btn btn-sm btn-warning'><i class='fa-solid fa-pen-to-square'></i></a>" +
                     "</div>" +
 
                     "<div class='col-6 text-end'>" +
@@ -355,8 +360,8 @@
                     "<button type='submit' class='btn btn-sm btn-danger' onclick='return confirm(`Apa iyaaa mau dihapus?`)'><i class='fa-solid fa-trash'></i></button>" +
                     "</form>" +
                     "</div>" +
-
-                    "</div>";
+                    "</div>" + "<br>" +
+                    "<p>Dibuat Oleh: " + feature.properties.user_created + "</p>";
 
                 layer.on({
                     click: function(e) {
